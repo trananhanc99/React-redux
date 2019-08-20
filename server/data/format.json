@@ -1,0 +1,13 @@
+{
+    "nameCategory": "breakfast",
+    "hot": "hot",
+    "product": {
+        "nameProduct": "Zathin",
+        "productHot": 1,
+        "imgProduct": "Heron, goliath",
+        "princeProduct": "0.44",
+        "detailProduct": "Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum. In hac habitasse platea dictumst.",
+        "commentProduct": 1,
+        "likeProduct": 1
+    }
+}
