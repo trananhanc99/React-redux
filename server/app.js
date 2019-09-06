@@ -11,9 +11,6 @@ var app = express();
 //** Require DB */
 require('./bin/connect');
 var indexRouter = require('./routes/api');
-
-
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
@@ -24,6 +21,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(cors());
 
 app.use('/', indexRouter);
 app.use('/users', indexRouter);
@@ -31,7 +29,6 @@ app.use('/post', indexRouter);
 app.use('/delete', indexRouter);
 app.use('/put', indexRouter);
 app.use('/showdata', indexRouter);
-app.use(cors());
 
 app.use(function(req, res, next) {
   return res.status(404).send({ message: 'Route'+req.url+' Not found.' });

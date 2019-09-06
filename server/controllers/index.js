@@ -1,9 +1,9 @@
-const Category = require('../models/Category.model')
+const Products = require('../models/Product.model')
 
 
 module.exports = {
   homepage: (req, res, next) => {
-      
+      res.send('')
   },
   users: (req, res, next)  => {
     res.send('200');
@@ -11,7 +11,15 @@ module.exports = {
 
   // Create Data
   postdata: (req, res, next) => {
-
+    const {nameProduct, productHot, imgProduct, princeProduct, detailProduct, commentProduct, likeProduct} = req.body;
+    try {
+      const newData = new Products({"nameProduct": nameProduct, "productHot": productHot, "imgProduct": imgProduct, "princeProduct": princeProduct, "detailProduct": detailProduct, "commentProduct": commentProduct, "likeProduct":likeProduct})
+      newData.save();
+      console.log(newData);
+    } catch (err) {
+      console.log(err)
+      
+    }
   },
 
   // Delete Data
@@ -44,19 +52,6 @@ module.exports = {
       }
     })
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   
 }
