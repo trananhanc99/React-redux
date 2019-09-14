@@ -23,12 +23,24 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
 
+
+// Router Product
 app.use('/', indexRouter);
 app.use('/users', indexRouter);
 app.use('/post', indexRouter);
 app.use('/delete', indexRouter);
 app.use('/put', indexRouter);
 app.use('/showdata', indexRouter);
+
+// // Router USer
+app.use('/showsuser', indexRouter);
+app.use('/adduser', indexRouter);
+app.use('/deleteuser', indexRouter);
+app.use('/updateuser', indexRouter);
+
+
+
+
 
 app.use(function(req, res, next) {
   return res.status(404).send({ message: 'Route'+req.url+' Not found.' });

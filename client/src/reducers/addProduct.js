@@ -1,32 +1,32 @@
-// import uniqid from "uniqid";
+
 const initialState = {
     product : [],
     addItems: [],
-    total: 2
+    total: 2,
 }
 const addProduct = (state=initialState, action) => {
     switch (action.type) {
-        case "FETCH_POST": 
-            return {...state,
-                product: action.data}
+        case "FETCH_POST":
+            return {
+                ...state, 
+                product: action.data
+            }
         case "ADD_PRODUCT":
-            let addedItem = state.product.find(item=> item.id === action.id)
-            // Kiểm tra xem có sản phẩm trong Data ko
-            let existed_item= state.addItems.find(item=> action.id === item.id)
-            // Kiểm tra trong cart xem đã có hàng chưa.
+            const addedItem = state.product.find(item=> item._id === action.id)
+            const existed_item= state.addItems.find(item=> action.id === item._id)
             if(existed_item)
             {
                 addedItem.quantity += 1 
-                addedItem.sunPro = Number(addedItem.quantity)* Number(addedItem.price)
+                addedItem.sunPro = Number(addedItem.quantity)* Number(addedItem.princeProduct)
                 return{
                     ...state,
-                    total: Number(state.total) + Number(addedItem.price)
+                    total: Number(state.total) + Number(addedItem.princeProduct)
                     }
             }
             else{
                 addedItem.quantity = 1;
                 //calculating the total
-                let newTotal = Number(state.total) + Number(addedItem.price);
+                let newTotal = Number(state.total) + Number(addedItem.princeProduct);
                 return{
                     ...state,
                     addItems: [...state.addItems, addedItem],
@@ -35,31 +35,31 @@ const addProduct = (state=initialState, action) => {
                 
             }
         case "REMOVE_PRODUCT": 
-            let itemToRemove= state.product.find(item=> action.id === item.id)
-            let new_items = state.addItems.filter(item=> action.id !== item.id)
+            let itemToRemove= state.product.find(item=> action.id === item._id)
+            let new_items = state.addItems.filter(item=> action.id !== item._id)
             console.log(new_items);
             // calculating the total
-            let newTotal = state.total - (Number(itemToRemove.price) * itemToRemove.quantity )
+            let newTotal = state.total - (Number(itemToRemove.princeProduct) * itemToRemove.quantity )
             return{
                 ...state,
                 addItems: new_items,
                 total: newTotal
             }
         case "ADD_QUANTITY":
-                let addQuantitu= state.product.find(item=> item.id === action.id)
+                let addQuantitu= state.product.find(item=> item._id === action.id)
                 addQuantitu.quantity += 1 
-                addQuantitu.sunPro = Number(addQuantitu.price) * Number(addQuantitu.quantity);
-                let newTotaled = Number(state.total) + Number(addQuantitu.price);
+                addQuantitu.sunPro = Number(addQuantitu.princeProduct) * Number(addQuantitu.quantity);
+                let newTotaled = Number(state.total) + Number(addQuantitu.princeProduct);
                 return{
                     ...state,
                     total: newTotaled
                 }
         case "SUB_QUANTITY":
-            let subItem = state.product.find(item=> item.id === action.id)
+            let subItem = state.product.find(item=> item._id === action.id)
             //if the qt == 0 then it should be removed
             if(subItem.quantity === 1){
-                let new_items = state.addItems.filter(item=>item.id !== action.id)
-                let newTotal = state.total - Number(subItem.price);
+                let new_items = state.addItems.filter(item=>item._id !== action.id)
+                let newTotal = state.total - Number(subItem.princeProduct);
                 return{
                     ...state,
                     addItems: new_items,
@@ -68,8 +68,8 @@ const addProduct = (state=initialState, action) => {
             }
             else {
                 subItem.quantity -= 1;
-                subItem.sunPro = Number(subItem.price) * Number(subItem.quantity);
-                let newTotaled = Number(state.total) - Number(subItem.price);
+                subItem.sunPro = Number(subItem.princeProduct) * Number(subItem.quantity);
+                let newTotaled = Number(state.total) - Number(subItem.princeProduct);
                 return{
                     ...state,
                     total: newTotaled

@@ -1,34 +1,43 @@
-import React from 'react'
-import './index.css';
+import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
 import { Link } from "react-router-dom";
 // Import IMG
+import { compareData } from 'actions'
+import './index.css';
 import Background from "assets/img/bgr-form.jpg"
 
+
+
+
+
+
 export default function Index() {
-    const handleChange = (e) => {
-        let target = e.target;
-        let value = target.type === 'checkbox' ? target.checked : target.value;
-        let name = target.name;
-        console.log(value)
-        console.log(name)
-    }
+    const dispatch = useDispatch()
+
+    const [user, setUsername] = useState({username: ''});
+    const [pass, setPass] = useState({upasssername: ''});
+    const [checked, setchecked] = useState(false);
     const bgrForm = {
         backgroundImage: `url(${Background})`
     }
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        dispatch(compareData(user, pass));
+    }
     return (
         <div className="area-login" style={bgrForm}>
-            <form className="login" action="/login" method="post">
+            <form className="login" onSubmit={handleSubmit}>
                 <div className="redirectForm">
                     <span className="signIn active"><Link to="/login">Sign In</Link></span>
                     <span className="signUn"><Link to="/">Sign Up</Link></span>
                 </div>
                 <label htmlFor="">Username</label>
-                <input className="username" type="text" onChange={(e) => handleChange(e)} name="username" placeholder="Username" />
+                <input className="username" type="text" onInput={(e) => setUsername(e.target.value)} name="username" placeholder="Username" />
                 <label htmlFor="">Password</label>
-                <input className="pass" onChange={(e) => handleChange(e)} type="password" name="pass" placeholder="Password" />
-                <input className="checkbox" onChange={(e) => handleChange(e)} type="checkbox" name="rememberme" id="rememberme"/>
+                <input className="pass" onInput={(e) => setPass(e.target.value)} type="password" name="pass" placeholder="Password" />
+                <input className="checkbox" onChange={(e) => setchecked(e.target.checked)} type="checkbox" name="rememberme" id="rememberme"/>
                 <label htmlFor="f-option">Remember me</label>
-                <button className="guiform" type="submit">Login</button>
+                <button className="guiform">Login</button>
             </form>
         </div>
     )

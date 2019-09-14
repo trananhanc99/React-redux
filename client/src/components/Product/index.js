@@ -7,6 +7,7 @@ import { useDispatch } from 'react-redux'
 const Index = (props) => {
     const dispatch = useDispatch()
     const handleClick = (id) => {
+        console.log(id)
         dispatch(addProduct(id))
     }
     return (

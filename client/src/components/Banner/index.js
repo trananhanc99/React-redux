@@ -6,9 +6,9 @@ function index(props) {
         <div className="banner">
             <Row className="banner-text">
                 <Col md="4">
-                    <h1>{props.textBanner}</h1>
+                    <h1 className="banner_text_iner">{props.textBanner}</h1>
                     <p>{props.description}</p>
-                    <button>{props.btn}</button>
+                    <button className="buy_now">{props.btn}</button>
                 </Col>
                 <Col md="8">
                     <div><img src={props.img} alt={props.alt}/></div>

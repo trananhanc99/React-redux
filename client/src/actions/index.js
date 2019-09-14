@@ -1,5 +1,4 @@
 import * as type from "constants/index.js";
-import { useDispatch } from 'react-redux'
 const axios = require('axios');
 
     //Api
@@ -50,4 +49,13 @@ export const fetchAllPosts = () => {
           throw(error);
         });
     };
-  };
+};
+
+
+export const compareData = (user, pass) => {
+    return {
+        type: type.COMPARE_DATA,
+        user,
+        pass
+    }
+}

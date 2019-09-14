@@ -6,14 +6,12 @@ import {
   NavbarToggler,
   NavbarBrand,
   Nav,
-  NavItem,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem } from 'reactstrap';
+  NavItem
+} from 'reactstrap';
 //Import Css
 import "./index.css"
 // import "assets/css/themify-icons.css"
+import logo from "assets/img/logo.png"
 export default class NavabarTop extends Component {
   constructor(props) {
     super(props);
@@ -32,7 +30,9 @@ export default class NavabarTop extends Component {
     return (
       <div className="navabar-Top">
         <Navbar light expand="md">
-        <NavbarBrand href="/">reactstrap</NavbarBrand>
+        <NavbarBrand href="/">
+          <img src={logo} alt="logo"/>
+        </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="m-auto" navbar>

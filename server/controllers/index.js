@@ -11,11 +11,10 @@ module.exports = {
 
   // Create Data
   postdata: (req, res, next) => {
-    const {nameProduct, productHot, imgProduct, princeProduct, detailProduct, commentProduct, likeProduct} = req.body;
+    const {nameProduct, imgProduct, princeProduct, detailProduct } = req.body;
     try {
-      const newData = new Products({"nameProduct": nameProduct, "productHot": productHot, "imgProduct": imgProduct, "princeProduct": princeProduct, "detailProduct": detailProduct, "commentProduct": commentProduct, "likeProduct":likeProduct})
+      const newData = new Products({"nameProduct": nameProduct, "imgProduct": imgProduct, "princeProduct": princeProduct, "detailProduct": detailProduct})
       newData.save();
-      console.log(newData);
     } catch (err) {
       console.log(err)
       
@@ -34,9 +33,9 @@ module.exports = {
 
   // Update
   putData: (req, res, next) => {
-    let {nameProduct, productHot, imgProduct, princeProduct, detailProduct, commentProduct, likeProduct, datePost} = req.body
+    let {nameProduct, imgProduct, princeProduct, detailProduct } = req.body;
     let id = req.params.id;
-    const productFindOne = Products.updateOne({ _id: id}, {nameProduct:nameProduct,productHot:productHot,imgProduct:imgProduct,princeProduct:princeProduct,detailProduct:detailProduct,commentProduct:commentProduct, likeProduct:likeProduct,datePost:datePost}, (err) => {
+    const productFindOne = Products.updateOne({ _id: id}, {"nameProduct": nameProduct, "imgProduct": imgProduct, "princeProduct": princeProduct, "detailProduct": detailProduct}, (err) => {
       console.log(err)
     });
     res.send('Hello' + id + " - ");

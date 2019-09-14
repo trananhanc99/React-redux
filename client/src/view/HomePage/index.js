@@ -1,7 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import Slider from "react-slick";
-
 // Components core
 import Banner from "components/Banner";
 import FeaturedCategory from "components/Featured_Category";
@@ -13,9 +12,10 @@ import ImgBanner from "assets/img/banner_img.png"
 import ImgFeature1 from "assets/img/feature/feature_1.png"
 import ImgFeature2 from "assets/img/feature/feature_2.png"
 import Imgproduct1 from "assets/img/product/product_1.png"
+
 const CounterComponent = () => {
-  const products = useSelector(state => state);
-  console.log(products);
+  const products = useSelector(state => state.Product);
+  const Data = products.product;
   const settings = {
     infinite: true,
     speed: 100,
@@ -34,7 +34,7 @@ const CounterComponent = () => {
         <Slider {...settings}>
           <Banner 
           textBanner="Wood & Cloth Sofa"
-          description="Tran Anh Anc"
+          description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text"
           btn="Xem thêm"
           img={ImgBanner} alt="Banner"
           />
@@ -64,14 +64,14 @@ const CounterComponent = () => {
       <div className="awesome">
         <h2>Awesome</h2>
         <Slider {...settingSlideProduct}>
-          {products.map((item, key) => {
+          {Data.map((item, key) => {
             return (
               <Product
-                id={item.id}
+                id={item._id}
                 img={Imgproduct1}
-                name={item.name}
+                name={item.nameProduct}
                 alt="Imgproduct1"
-                price={item.price}
+                price={item.princeProduct}
                 key={key}
               />
             );
@@ -80,8 +80,6 @@ const CounterComponent = () => {
         </Slider>
       </div>
     </div>
-    
   )
 }
-
 export default CounterComponent;

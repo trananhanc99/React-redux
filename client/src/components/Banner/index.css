@@ -6,3 +6,34 @@
 .banner-text {
     align-items: center;
 }
+
+.banner_text_iner {
+    font-size: 66px;
+    text-transform: capitalize;
+    font-weight: 700;
+    margin-bottom: 35px;
+    line-height: 72px;
+}
+
+.buy_now {
+    display: inline-block;
+    width: 180px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    border-radius: 5px;
+    background-color: #ff3368;
+    font-size: 15px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    color: #fff;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+    text-transform: capitalize;
+    background-size: 200% auto;
+    margin-top: 30px;
+    text-transform: uppercase;
+    box-shadow: -1.717px 8.835px 29.76px 2.24px rgba(255, 51, 104, 0.18);
+    border: none;
+}
