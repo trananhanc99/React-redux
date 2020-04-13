@@ -6,9 +6,10 @@ import Logo from "assets/img/logo.png"
 // Import router
 import routes from "router";
 // Import Component
-import NavabarTop from "components/Navabar_Top"
+import NavbarTop from "components/Navabar_Top"
 
 const switchRoutes =routes.map((prop, key) => {
+  // console.log(prop.path, prop.component)
         return (
           <Switch key={key}>
             <Route path={prop.path} component={prop.component} key={key}/>
@@ -16,17 +17,15 @@ const switchRoutes =routes.map((prop, key) => {
         )
     }
 );
-const index = () => {
+const Index = () => {
     return (
         <Container>
-            {/* MenuTop */}
-            <NavabarTop
+            <NavbarTop
               logo={Logo}
             />
             {switchRoutes}
-
         </Container>
     )
 }
 
-export default index
+export default Index

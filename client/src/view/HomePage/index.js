@@ -1,6 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import Slider from "react-slick";
+import { Row, Col } from 'reactstrap';
 // Components core
 import Banner from "components/Banner";
 import FeaturedCategory from "components/Featured_Category";
@@ -63,21 +64,23 @@ const CounterComponent = () => {
       </div>
       <div className="awesome">
         <h2>Awesome</h2>
-        <Slider {...settingSlideProduct}>
+        <Row>
           {Data.map((item, key) => {
             return (
-              <Product
-                id={item._id}
-                img={Imgproduct1}
-                name={item.nameProduct}
-                alt="Imgproduct1"
-                price={item.princeProduct}
-                key={key}
-              />
+              <Col sm='6' md='3'>
+                <Product
+                  id={item._id}
+                  img={Imgproduct1}
+                  name={item.nameProduct}
+                  alt="Imgproduct1"
+                  price={item.princeProduct}
+                  key={key}
+                />
+              </Col>
+              
             );
           })}
-          
-        </Slider>
+        </Row>
       </div>
     </div>
   )

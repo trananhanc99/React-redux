@@ -19,12 +19,12 @@ import configureStore from 'store/store.js'
 const store = configureStore();
 store.dispatch(fetchAllPosts());
 const hist = createBrowserHistory();
+console.log(Manin)
 ReactDOM.render(
     <Provider store={store}>
       <Router history={hist}>
         <Switch>
-          <Route path={hist.location.pahname} component={Manin} />
-          <Redirect from="/" to="/home" />
+            <Route path={hist.location.pathname} component={Manin} />
         </Switch>
       </Router>
   </Provider>, 
