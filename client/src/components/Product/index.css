@@ -19,6 +19,8 @@
 }
 .single_product_text a{
     margin: 20px 0px;
+    color: #ff3368;
+    text-decoration: none;
 }
 
 .add_cart {
