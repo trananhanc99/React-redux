@@ -15,8 +15,8 @@ import ImgFeature2 from "assets/img/feature/feature_2.png"
 import Imgproduct1 from "assets/img/product/product_1.png"
 
 const CounterComponent = () => {
-  const products = useSelector(state => state.Product);
-  const Data = products.product;
+  // const products = useSelector(state => state.Product);
+  const Data = [];
   const settings = {
     infinite: true,
     speed: 100,

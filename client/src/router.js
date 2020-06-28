@@ -7,7 +7,7 @@ import Login from "view/Login";
 
 const dashboardRoutes = [
   {
-    path: "/home",
+    path: "/",
     name: "home",
     component:HomePage,
   },
